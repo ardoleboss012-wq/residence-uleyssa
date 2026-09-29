@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ulysse-cream: #F8F6F2;
+  --color-ulysse-white: #FFFFFF;
+  --color-ulysse-sand: #D9C7A3;
+  --color-ulysse-gold: #A57D52;
+  --color-ulysse-brown: #4D4036;
+  --color-ulysse-black: #1A1A1A;
+
+  --font-serif: "Cormorant Garamond", serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --animate-accordion-down: accordion-down 0.3s ease-out;
+  --animate-accordion-up: accordion-up 0.3s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; opacity: 0; }
+    to { height: var(--radix-accordion-content-height); opacity: 1; }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); opacity: 1; }
+    to { height: 0; opacity: 0; }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-ulysse-cream text-ulysse-brown font-sans antialiased selection:bg-ulysse-sand selection:text-ulysse-brown overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal;
+  }
+}
+
+/* Custom utilities for smooth and premium feel */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .reveal-text {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
